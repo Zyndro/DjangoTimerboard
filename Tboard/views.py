@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Timery
 import datetime
+from django.http import HttpResponseRedirect
 from datetime import timedelta
 
 # Create your views here.
@@ -22,9 +23,9 @@ def add(request):
         now = datetime.datetime.now() + timedelta(days=int(dni),hours=int(godziny),minutes=int(minuty))
         now = now.strftime("%m/%d/%Y, %H:%M:%S")
         add_to_db = Timery.objects.create(nazwa=nazwa, date1=now)
+        return HttpResponseRedirect('/')
 
 
-
-
-    return render(request, 'timers/add.html', {'dupa': now})
+    else:
+        return render(request, 'timers/add.html', {'dupa': now})
 
