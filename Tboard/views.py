@@ -20,7 +20,7 @@ def add(request):
         dni = request.POST.get("dni")
         godziny = request.POST.get("godziny")
         minuty = request.POST.get("minuty")
-        now = datetime.datetime.now() + timedelta(days=int(dni),hours=int(godziny+1),minutes=int(minuty))
+        now = datetime.datetime.now() + timedelta(days=int(dni),hours=int(godziny)+1,minutes=int(minuty))
         now = now.strftime("%m/%d/%Y, %H:%M:%S")
         add_to_db = Timery.objects.create(nazwa=nazwa, date1=now)
         return HttpResponseRedirect('/')
