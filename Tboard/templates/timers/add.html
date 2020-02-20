@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<form method="POST" action="">
+    {% csrf_token %}
+
+    <span style="display:inline-block">
+    <label for=nazwa style="display:block">Nazwa:</label>
+    <input type=text name=nazwa id=nazwa value="nazwa" style="text-align:right;"/>
+    </span>
+    <br>
+
+    <span style="display:inline-block">
+    <label for=dni style="display:block">Dni:</label>
+    <input type=text name=dni id=dni value="0" style="text-align:right;"/>
+    </span>
+
+    <span style="display:inline-block">
+    <label for=godziny  style="display:block">Godziny:</label>
+    <input type=text name=godziny id=godziny value="0" style="text-align:right;"/>
+    </span>
+
+    <span style="display:inline-block">
+    <label for=minuty  style="display:block">Minuty:</label>
+    <input type=text name=minuty id=minuty value="0" style="text-align:right;"/>
+    </span>
+    <br>
+
+    <input type="submit" value="Dodaj"/>
+</form>
+
+
+
+<input type="submit" value="Anuluj"
+    onclick="window.location='/';" />
+<br>
+
+{% endblock %}

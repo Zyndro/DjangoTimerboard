@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+{% for instance in object_list %}
+<p><b>Co:</b> {{instance.nazwa}} <b>Kiedy:</b> {{instance.date1}}
+
+{% endfor %}
+<hr class="mt-0 mb-4">
+
+<input type="submit" value="dodaj timer"
+onclick="window.location='add';" /><br>
+{% endblock %}
