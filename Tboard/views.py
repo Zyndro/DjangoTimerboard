@@ -8,9 +8,15 @@ from datetime import timedelta
 
 
 def index(request):
+
+
     queryset = Timery.objects.all()
+    queryset = Timery.objects.order_by('date1')
     context = {
         "object_list": queryset}
+
+
+    print(context)
     return render(request, 'timers/list.html', context)
 
 def add(request):
