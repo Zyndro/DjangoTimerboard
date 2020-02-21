@@ -1,45 +1,64 @@
 {% extends 'base.html' %}
 
+
 {% block content %}
+
     {% for instance in object_list %}
-        <p><b>Co:</b> {{instance.nazwa}} <b>Kiedy:</b> {{instance.date1}}
-
-            {% if forloop.first %}
-            :::: <font size="3" color="red"> <i id="demo"></i></font></p>
-            <script>
-            // Set the date we're counting down to
-            var countDownDate = new Date("{{instance.date1}}").getTime();
-
-            // Update the count down every 1 second
-            var x = setInterval(function() {
-
-            // Get today's date and time
-            var now = new Date().getTime();
-
-            // Find the distance between now and the count down date
-            var distance = countDownDate - now;
-
-            // Time calculations for days, hours, minutes and seconds
-            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            // Display the result in the element with id="demo"
-            document.getElementById("demo").innerHTML = days + "d " + hours + "h "
-            + minutes + "m " + seconds + "s ";
-
-            // If the count down is finished, write some text
-            if (distance < 0) {
-            clearInterval(x);
-            document.getElementById("demo").innerHTML = "EXPIRED";
-            }
-            }, 1000);
-            </script>
-            {% endif %}
-        </p>
+    <p><b id="id">Co:</b> <i id="nazwa{{forloop.counter}}">{{instance.nazwa}}</i> <b>Kiedy:</b> <i id="data{{forloop.counter}}">{{instance.date1}}</i>
+            :::: <font size="3" color="red"> <i id="demo{{forloop.counter}}"></i></font></p>
     {% endfor %}
     <hr class="mt-0 mb-4">
     <input type="submit" value="dodaj timer"
     onclick="window.location='add';" /><br>
+
+    <script>
+
+
+        // Set the date we're counting down to
+    var time = new Array({% for instance in object_list %}'{{instance.date1}}',{% endfor %})
+    var x = setInterval(function() {
+    for (var j = 0; j < time.length; j++){
+        var countDownDate = new Date(time[j]).getTime();
+
+        var count = j + 1
+
+      // Get today's date and time
+      var now = new Date().getTime();
+
+      var distance = countDownDate - now;
+      // Find the distance between now and the count down date
+
+      // Display the result in the element with id="demo"
+
+     // document.write("demo" + j)
+
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                  // Display the result in the element with id="demo"
+        document.getElementById("demo" + count).innerHTML = days + "d " + hours + "h "
+            + minutes + "m " + seconds + "s ";
+
+      // If the count down is finished, write some text
+      if (distance < 0) {
+        document.getElementById("demo" + count).innerHTML = "EXPIRED";
+
+      }
+       }
+    }, 1000);
+
+
+    </script>
+
+
+
+
+
+
 {% endblock %}
+
+
+
+
