@@ -9,8 +9,6 @@ from datetime import timedelta
 
 def index(request):
 
-
-    queryset = Timery.objects.all()
     queryset = Timery.objects.order_by('date1')
     context = {
         "object_list": queryset}
@@ -22,14 +20,17 @@ def index(request):
 def add(request):
     now = 0
     if request.method == 'POST':
-        nazwa = request.POST.get("nazwa")
-        dni = request.POST.get("dni")
-        godziny = request.POST.get("godziny")
-        minuty = request.POST.get("minuty")
-        now = datetime.datetime.now() + timedelta(days=int(dni),hours=int(godziny)+1,minutes=int(minuty))
-        now = now.strftime("%m/%d/%Y, %H:%M:%S")
-        add_to_db = Timery.objects.create(nazwa=nazwa, date1=now)
-        return HttpResponseRedirect('/')
+        try:
+            nazwa = request.POST.get("nazwa")
+            dni = request.POST.get("dni")
+            godziny = request.POST.get("godziny")
+            minuty = request.POST.get("minuty")
+            now = datetime.datetime.now() + timedelta(days=int(dni),hours=int(godziny)+1,minutes=int(minuty))
+            now = now.strftime("%m/%d/%Y, %H:%M:%S")
+            add_to_db = Timery.objects.create(nazwa=nazwa, date1=now)
+            return HttpResponseRedirect('/')
+        except:
+            return render(request, 'timers/error.html')
 
 
     else:
