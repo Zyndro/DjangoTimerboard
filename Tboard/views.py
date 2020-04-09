@@ -26,8 +26,10 @@ def add(request):
             godziny = request.POST.get("godziny")
             minuty = request.POST.get("minuty")
             now = datetime.datetime.now() + timedelta(days=int(dni),hours=int(godziny)+2,minutes=int(minuty))
-            now = now.strftime("%m/%d/%Y, %H:%M:%S")
-            add_to_db = Timery.objects.create(nazwa=nazwa, date1=now)
+            now1 = datetime.datetime.now() + timedelta(days=int(dni), hours=int(godziny), minutes=int(minuty))
+            now = now.strftime("%m/%d/%Y, %H:%M")
+            now1 = now1.strftime("%H:%M")
+            add_to_db = Timery.objects.create(nazwa=nazwa, date1=now, evetime=now1)
             return HttpResponseRedirect('/')
         except:
             return render(request, 'timers/error.html')

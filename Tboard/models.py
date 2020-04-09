@@ -9,6 +9,7 @@ class Timery(models.Model):
 
     nazwa = models.CharField(max_length=100)
     date1 = models.TextField(blank=True)
+    evetime = models.TextField(blank=True)
 
 
 

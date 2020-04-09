@@ -4,7 +4,7 @@
 {% block content %}
 
     {% for instance in object_list %}
-    <p><b id="id">Co:</b> <i id="nazwa{{forloop.counter}}">{{instance.nazwa}}</i> <b>Kiedy:</b> <i id="data{{forloop.counter}}">{{instance.date1}}</i>
+    <p><b id="id">Co:</b> <i id="nazwa{{forloop.counter}}">{{instance.nazwa}}</i> <b>Kiedy:</b> <i id="data{{forloop.counter}}">{{instance.date1}}</i> PL/EVE <i id="eve{{forloop.counter}}">{{instance.evetime}}</i>
             :::: <font size="3" color="red"> <i id="demo{{forloop.counter}}"></i></font></p>
     {% endfor %}
     <hr class="mt-0 mb-4">
