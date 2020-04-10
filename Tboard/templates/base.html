@@ -15,13 +15,13 @@
 
       @keyframes marquee {
       0% {
-      transform: translateX(-200%);
+      transform: translateX(-230%);
       }
       50% {
-      transform: translateX(+200%);
+      transform: translateX(+230%);
       }
       100% {
-      transform: translateX(-200%);
+      transform: translateX(-230%);
       }
       }
     </style>
@@ -31,14 +31,18 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-7">
-          <hr class="mt-0 mb-4">
           <h1 class="mt-2">Timery dla uposledzonych</h1>
           <hr class="mt-0 mb-4">
           {% block content %}
           {% endblock %}
           <br>
+          <hr class="mt-0 mb-4">
+          <h1 class="mt-2">Tablica dzbanów:</h1>
           <div class="marquee__content">
-             <h1 class="mt-1"><img src="https://images.evetech.net/characters/1247653638/portrait?size=64"> <font size="25" color="Red">Szaman najgorszy!</font> <img src="https://images.evetech.net/characters/1247653638/portrait?size=64"></h1>
+            <h1 class="mt-1"><img src="https://images.evetech.net/characters/1247653638/portrait?size=64"> <font size="21" color="Red">Szaman</font><img src="https://images.evetech.net/characters/1247653638/portrait?size=64"></h1>
+          </div>
+            <div class="marquee__content">
+            <h1 class="mt-1"><img src="https://images.evetech.net/characters/1848010139/portrait?size=64"> <font size="21" color="Red">Phunas</font> <img src="https://images.evetech.net/characters/1848010139/portrait?size=64"></h1>
           </div>
         </div>
       </div>
